@@ -1,0 +1,40 @@
+div.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: linear-gradient(to bottom, rgb(254, 130, 24, 0.5), rgb(254, 130, 24)); */
+    /* background: rgb(254, 175, 24, 0.3); */
+    /*patron */		
+    // background-repeat: round;
+    /* background-position: top center; */
+    // background-blend-mode: multiply;
+
+    background-color: #FFF;
+    background-image: url("/../../assets/campus.jpg");
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.material-icons.md-90 { font-size: 90px; }
+.material-icons.md-40 { font-size: 40px; }
+
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-success { color: green; }
+.material-icons.md-danger { color: red; }
+
+.py-2 {
+    padding: 10px 0 30px;
+}
+
+.py-3 {
+    padding: 60px 0;
+}
+
+.pt-3 {
+    padding-top: 60px;
+}
+

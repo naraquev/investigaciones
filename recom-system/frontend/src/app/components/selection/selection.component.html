@@ -1,0 +1,86 @@
+<div class="container">
+    <mat-card class="card">
+
+        <mat-horizontal-stepper class="stepper-box" linear="true" #stepper
+            (selectionChange)="nextStep($event.selectedIndex)">
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="firstFormGroup" class="full-height mod">
+                    <ng-template matStepLabel>Ingrese el id del estudiante</ng-template>
+                    <mat-form-field class="full-width py-3">
+                        <input matInput placeholder="Identificador" formControlName="id" required
+                            (keyup.enter)="nextStep(1)">
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperPrevious (click)="goBack()" class="med-width">Volver al
+                            inicio</button>
+                        <button mat-button matStepperNext class="med-width">Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <mat-step [stepControl]="secondFormGroup">
+                <ng-template matStepLabel>Seleccione las materias a inscribir para cada alternativa
+                </ng-template>
+                <mat-vertical-stepper [hidden]="loading" class="stepper-box" #vertStepper>
+                    <mat-step label="Primera alternativa">
+                        <drag-and-drop [id]="studentId" [recomendation]="isRecom" (targetSubjects)="saveSelection($event, 1)" [loading]="loading"
+                            [reset]="resetList" (loaded)=loaded($event)></drag-and-drop>
+                        <div>
+
+                        </div>
+                    </mat-step>
+                    <mat-step label="Segunda alternativa">
+                        <drag-and-drop [id]="studentId" [recomendation]="isRecom" (targetSubjects)="saveSelection($event, 2)" [loading]="loading"
+                            [reset]="resetList" (loaded)=loaded($event)></drag-and-drop>
+
+                    </mat-step>
+                </mat-vertical-stepper>
+                <ng-container *ngIf="loading">
+                    <div class="card-spinner full-height">
+                        <mat-progress-spinner color="primary" mode="indeterminate">
+                        </mat-progress-spinner>
+                    </div>
+                </ng-container>
+                <div style="padding: 20px 0;">
+                    <button mat-button matStepperPrevious class="med-width">Atrás</button>
+                    <button mat-button matStepperNext class="med-width">Siguiente</button>
+                </div>
+            </mat-step>
+
+            <mat-step>
+                <ng-template matStepLabel>
+                    Resultado
+                </ng-template>
+                <div class="result-grid py-2 full-height" *ngIf="!loadingPred">
+                    <h3> Puntajes obtenidos </h3>
+                    <mat-card class="card-combination" *ngFor="let combination of predictionResult">
+                        <mat-grid-list cols="2" rowHeight="130px">
+                            <mat-grid-tile colspan="1" rowspan="1">
+
+                                <mat-list style="padding: 8px 0">
+                                    <mat-list-item class="simple" *ngFor="let subject of combination.subjects">
+                                        <p matLine>
+                                            <span> {{ subject.name }} </span>
+                                        </p>
+                                    </mat-list-item>
+                                </mat-list>
+
+                            </mat-grid-tile>
+                            <mat-grid-tile colspan="1" rowspan="1">
+                                <h4 matLine> Puntuación: {{ combination.prediction * 100 | number: '.2-2'}} </h4>
+                            </mat-grid-tile>
+                        </mat-grid-list>
+                    </mat-card>
+                </div>
+                <div class="card-spinner" *ngIf="loadingPred">
+                    <mat-progress-spinner color="primary" mode="indeterminate">
+                    </mat-progress-spinner>
+                </div>
+                <div>
+                    <button mat-button matStepperPrevious class="med-width">Atrás</button>
+                    <button mat-button (click)="reset(); stepper.reset(); vertStepper.reset();" class="med-width">Resetear</button>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </mat-card>
+</div>

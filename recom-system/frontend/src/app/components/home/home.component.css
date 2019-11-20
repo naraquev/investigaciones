@@ -1,0 +1,33 @@
+ 
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 30px;
+    justify-content: space-evenly;
+}
+
+.option-card {
+    min-width: 350px;
+    max-width: 400px;
+    min-height: 200px;
+    text-align: center;
+    background: rgb(254, 255, 255, 0.8);
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.option-card:hover {
+    cursor: pointer;
+    /* background: rgb(254, 255, 255, 0.7);  */
+    background: whitesmoke;
+}
+
+p {
+    font-size: 14px;
+}

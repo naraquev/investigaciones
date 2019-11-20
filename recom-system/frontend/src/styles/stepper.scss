@@ -1,0 +1,80 @@
+.stepper-box {
+    min-height: 550px;
+    height: auto;
+    min-width: 70vw;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.med-width {
+    width: 50%;
+}
+
+.card {
+    /* margin: 40px; */
+    background-color: rgba(255, 255, 255, 0);
+    padding: 0;
+    width: 80vw;
+    margin: auto;
+    box-shadow: none !important;
+    // max-width: 1000px;
+}
+
+.mat-horizontal-content-container {
+    padding: 0 24px;
+    // max-height: 75vh;
+
+    // .mat-horizontal-stepper-content {
+    //     max-height: 70vh;
+    //     overflow-y: auto;
+    // }
+}
+
+.result-grid {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-gap: 10px;
+    justify-content: center;
+    text-align: center;
+}
+
+.card-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 420px;
+}
+
+.full-height {
+    min-height: 450px;
+    display: flex;
+    flex-flow: column;
+
+    &.mod {
+        // min-height: 530px;
+        justify-content: space-between;
+    }
+}
+
+.card-combination {
+    padding: 6px !important;
+    margin: 10px 0;
+    height: -webkit-fill-available;
+    border: solid 1px #d3d3d39e;
+    border-radius: 4px;
+    background: white;
+    min-height: 80px;
+    width: 800px;
+    align-self: center;
+  }
+  
+  .simple {
+    height: initial !important;
+    padding: 2px !important;
+    font-size: 14px !important;
+  }

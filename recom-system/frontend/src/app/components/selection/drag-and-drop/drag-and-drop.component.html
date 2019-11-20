@@ -1,0 +1,28 @@
+<div cdkDropListGroup *ngIf="!loading" class="global-container" [ngClass]="!recomendation ? 'comparation' : ''">
+    <div class="asignatures-container">
+        <h2>Materias disponibles</h2>
+
+        <div cdkDropList [cdkDropListData]="allSubjects" class="asignatures-list" cdkDropListSortingDisabled
+            (cdkDropListDropped)="drop($event)">
+            <div class="asignature-box" *ngFor="let item of allSubjects" cdkDrag>{{item.name}}</div>
+        </div>
+    </div>
+
+    <div class="asignatures-container">
+        <h2>{{ recomendation ? 'Materias descartadas' : 'Materias seleccionadas'}}</h2>
+
+        <div cdkDropList [cdkDropListData]="studentSubjects" class="asignatures-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="asignature-box" *ngFor="let item of studentSubjects" cdkDrag>{{item.name}}</div>
+        </div>
+    </div>
+
+    <div class="asignatures-container custom" *ngIf="recomendation">
+        <h2> Materias obligatorias </h2>
+
+        <div cdkDropList [cdkDropListData]="preselSubjects" class="asignatures-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="asignature-box" *ngFor="let item of preselSubjects" cdkDrag>{{item.name}}</div>
+        </div>
+    </div>
+</div>
