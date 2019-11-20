@@ -1,0 +1,55 @@
+<h2>Verifica que tan ofensiva es una frase</h2>
+<div class="data-line">
+  <span *ngIf="singleLoading" class="spinner spinner-inline"> Loading... </span>
+  <span *ngIf="singleResult <= 0.35" class="probabilidad">
+    Probabilidad: <span class="not-toxic"> {{ singleResult }} </span> Poco probable de ser ofensivo</span
+  >
+  <span *ngIf="singleResult > 0.35 && singleResult < 0.65" class="probabilidad">
+    Probabilidad:
+    <span class="neutral"> {{ singleResult }} </span> Relativamente neutro
+  </span>
+  <span *ngIf="singleResult >= 0.65" class="probabilidad">
+    Probabilidad: <span class="toxic"> {{ singleResult }} </span> Bastante probable de ser ofensivo
+  </span>
+</div>
+<textarea id="singleText" [(ngModel)]="singleText" placeholder="Inserte un texto para evaluar..." ></textarea>
+<button class="cm-btn" [disabled]="singleLoading" (click)="rankText()">
+  Verificar
+</button>
+<hr />
+<h2>Tambien puedes calificar conversaciones en Twitter!</h2>
+<input type="text" class="input" [(ngModel)]="keyword" placeholder="Inserte palabras para buscar..." />
+<button class="cm-btn btn-soft-blue" [disabled]="tweetsLoading" (click)="rankTweets()">
+  Buscar tweets
+</button>
+<div class="results">
+  <div align="center" *ngIf="tweetsLoading">
+    <strong style="display:block">{{ tweetsLoadingMsg }}</strong>
+    <div id="spinner" class="lds-grid">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div *ngIf="rankedTweets.length > 0">
+    <div class="slidecontainer">
+      <p>Mostrando tweets con probabilidad menor de {{ (filterValue / 100).toFixed(2) }}</p>
+      <input type="range" min="1" max="100" class="slider" [(ngModel)]="filterValue" >
+    </div>
+    <div class="tweets-container">
+      <div *ngFor="let tweet of (rankedTweets | filter: filterValue / 100)" class="tweet">
+        <div class="displayer" [ngClass]="{ 'not-toxic': tweet.toxic[0] <= 0.35, neutral: tweet.toxic[0] > 0.35 && tweet.toxic[0] < 0.65, toxic: tweet.toxic[0] >= 0.65 }"></div>
+        <div class="text">{{ tweet.text }}</div>
+        <p class="caption" [ngClass]="{ 'not-toxic': tweet.toxic[0] <= 0.35, neutral: tweet.toxic[0] > 0.35 && tweet.toxic[0] < 0.65, toxic: tweet.toxic[0] >= 0.65 }">
+          {{ tweet.toxic[0].toFixed(2) }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

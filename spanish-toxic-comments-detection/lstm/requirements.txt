@@ -1,0 +1,46 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: win-64
+_tflow_select=2.2.0=eigen
+absl-py=0.6.1=py36_0
+astor=0.7.1=py36_0
+blas=1.0=mkl
+ca-certificates=2018.12.5=0
+certifi=2018.11.29=py36_0
+dill=0.2.8.2=py36_0
+gast=0.2.1=py36_0
+grpcio=1.16.1=py36h351948d_1
+h5py=2.9.0=py36h5e291fa_0
+hdf5=1.10.4=h7ebc959_0
+icc_rt=2019.0.0=h0cc432a_1
+intel-openmp=2019.1=144
+keras-applications=1.0.6=py36_0
+keras-preprocessing=1.0.5=py36_0
+libprotobuf=3.6.1=h7bd577a_0
+markdown=3.0.1=py36_0
+mkl=2019.1=144
+mkl_fft=1.0.10=py36h14836fe_0
+mkl_random=1.0.2=py36h343c172_0
+numpy=1.15.4=py36h19fb1c0_0
+numpy-base=1.15.4=py36hc3f5095_0
+openssl=1.1.1a=he774522_0
+pathlib=1.0.1=py36_1
+pip=18.1=py36_0
+protobuf=3.6.1=py36h33f27b4_0
+pyreadline=2.1=py36_1
+python=3.6.5=h0c2934d_0
+scipy=1.1.0=py36h29ff71c_2
+setuptools=40.6.3=py36_0
+six=1.12.0=py36_0
+sqlite=3.26.0=he774522_0
+tensorboard=1.12.2=py36h33f27b4_0
+tensorflow=1.12.0=eigen_py36h67ac661_0
+tensorflow-base=1.12.0=eigen_py36h45df0d8_0
+termcolor=1.1.0=py36_1
+vc=14.1=h0510ff6_4
+virtualenv=16.0.0=py36_0
+vs2015_runtime=14.15.26706=h3a45250_0
+werkzeug=0.14.1=py36_0
+wheel=0.32.3=py36_0
+wincertstore=0.2=py36h7fe50ca_0
+zlib=1.2.11=h62dcd97_3

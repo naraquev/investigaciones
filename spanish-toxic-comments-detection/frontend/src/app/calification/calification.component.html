@@ -1,0 +1,45 @@
+<h2>Calificación de datos</h2>
+
+<div *ngIf="!loading">
+  <h4>¿Consideras que este mensaje tiene intenciones ofensivas?</h4>
+
+  <div class="comment-box" *ngIf="currentComment">
+    <p>{{ currentComment.text }}</p>
+  </div>
+
+  <div class="row">
+    <button
+      class="cm-btn btn-cal btn-green btn-not-toxic"
+      (click)="calificate(false)"
+      [disabled]="disabled"
+    >
+      No, no es ofensivo
+    </button>
+    <button class="cm-btn btn-cal " (click)="getNext()" [disabled]="disabled">
+      No se, paso.
+    </button>
+    <button
+      class="cm-btn btn-cal btn-red btn-toxic"
+      (click)="calificate(true)"
+      [disabled]="disabled"
+    >
+      Si, es ofensivo
+    </button>
+  </div>
+</div>
+<div align="center" *ngIf="loading">
+  <strong style="display:block"
+    >Por favor, espere mientras buscamos los tweets.</strong
+  >
+  <div id="spinner" class="lds-grid">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>

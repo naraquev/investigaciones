@@ -1,0 +1,55 @@
+<h2>Modulo de extracción de data</h2>
+<div class="row">
+  <label for="hashtag">Hashtag o fracción de contenido del tweet:</label>
+  <input id="hashtag" class="cm-input" type="text" [formControl]="hashtag" />
+  <button class="cm-btn" (click)="getTwitterComments()">Buscar</button>
+  <small>Todos los comentarios son extraidos de Twitter.</small>
+</div>
+
+<h4 *ngIf="counter">Hay {{ counter.total }} tweets almacenados.</h4>
+<h4 *ngIf="percentage">
+  Se ha calificado el {{ percentage | number: "1.2-2" }} %
+</h4>
+
+<button (click)="downloadCSV()" [disabled]="!downloadable">Preparar CSV</button>
+<a [href]="downloadURI" *ngIf="downloadURI">Descargar</a>
+
+<div align="center" *ngIf="loading">
+  <strong style="display:block"
+    >Por favor, espere mientras buscamos los tweets.</strong
+  >
+  <div id="spinner" class="lds-grid">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<h4 *ngIf="comments">Seleccionados {{ selected?.length }} tweets.</h4>
+
+<clr-datagrid [(clrDgSelected)]="selected" [clrDgRowSelection]="true">
+  <clr-dg-column>Tweet</clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let comment of comments" [clrDgItem]="comment">
+    <clr-dg-cell>{{ comment.text }}</clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>{{ comments.length }} tweets</clr-dg-footer>
+</clr-datagrid>
+
+<div class="row">
+  <button
+    class="cm-btn"
+    style="width: 100%"
+    [disabled]="disabled"
+    (click)="pushToDB()"
+  >
+    Guardar
+  </button>
+</div>

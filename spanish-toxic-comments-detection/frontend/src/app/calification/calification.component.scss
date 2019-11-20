@@ -1,0 +1,42 @@
+@import '../../assets/styles/general.scss';
+
+.comment-box{
+    background-color: #f0f0f0;
+    border: 1px solid #949494;
+    border-radius: 4px;
+    margin:15px;
+    padding:20px;
+    font-style: italic;
+    color: #5f5f5f;
+    text-align: justify;    
+    display:flex;
+    align-items: flex-start;
+}
+
+p{
+    margin: 0;
+}
+
+.btn-cal{
+    width: 100%;
+}
+@media (min-width: 767px){
+    .btn-cal{
+        width: 20%;
+    }
+}
+
+.btn-toxic{
+    background-color: $color-orange;
+}
+
+.btn-not-toxic{
+    background-color: $color-soft-blue;
+}
+
+.row{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+}
